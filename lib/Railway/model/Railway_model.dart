@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-List<HomeModal> trainmodelFromJson(String str) =>
-    List<HomeModal>.from(json.decode(str).map((x) => HomeModal.fromJson(x)));
+List<RailwayModal> trainmodelFromJson(String str) =>
+    List<RailwayModal>.from(json.decode(str).map((x) => RailwayModal.fromJson(x)));
 
-String trainmodelToJson(List<HomeModal> data) =>
+String trainmodelToJson(List<RailwayModal> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class HomeModal {
+class RailwayModal {
   int? trainNum;
   String? name;
   String? trainFrom;
   String? trainTo;
   Data? data;
 
-  HomeModal({
+  RailwayModal({
     this.trainNum,
     this.name,
     this.trainFrom,
@@ -21,7 +21,7 @@ class HomeModal {
     this.data,
   });
 
-  factory HomeModal.fromJson(Map<String, dynamic> json) => HomeModal(
+  factory RailwayModal.fromJson(Map<String, dynamic> json) => RailwayModal(
     trainNum: json["train_num"],
     name: json["name"],
     trainFrom: json["train_from"],

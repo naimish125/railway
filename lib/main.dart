@@ -9,13 +9,13 @@ void main() {
       MultiProvider(
           providers: [
             ChangeNotifierProvider(
-              create: (context) => HomeProvider(),
+              create: (context) => RailwayProvider(),
             ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             routes: {
-              '/': (context) => HomeScreen(),
+              '/': (context) => RailwayScreen(),
             },
           ),
           ),

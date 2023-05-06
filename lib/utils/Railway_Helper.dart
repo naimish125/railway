@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import '../Railway/model/Railway_model.dart';
 
 class ApiHelper {
-  Future<HomeModal?> coronaApiCall(String train) async {
-    String apiLink = "https://rapidapi.com/navii/api/railway-trains-${train}/";
+  Future<RailwayModal?> RailwayApiCall(String train) async {
+    String apiLink = "https://trains.p.rapidapi.com/";
     var response = await http.get(Uri.parse(apiLink), headers: {
       "content-type": "application/json",
       "X-RapidAPI-Key": "891ebeaadfmshcdb75ddf0e11d14p18d866jsn01058ac4fde1",
@@ -15,9 +15,9 @@ class ApiHelper {
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
 
-      HomeModal homeModal = HomeModal.fromJson(json);
+      RailwayModal RModal = RailwayModal.fromJson(json);
 
-      return homeModal;
+      return RModal;
     }
     return null;
     }

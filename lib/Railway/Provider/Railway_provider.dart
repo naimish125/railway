@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import '../../utils/Railway_Helper.dart';
 import '../model/Railway_model.dart';
 
-class HomeProvider extends ChangeNotifier {
+class RailwayProvider extends ChangeNotifier {
   ApiHelper apiHelper = ApiHelper();
-  HomeModal homeModal = HomeModal();
+  RailwayModal RModal = RailwayModal();
   TextEditingController trainc = TextEditingController();
   String train = "Rajdhani";
 
-  Future<void> coronaApiGet() async {
-    var response = await apiHelper.coronaApiCall(train);
-    homeModal = response!;
+  Future<void> Railway() async {
+    var response = await apiHelper.RailwayApiCall(train);
+    RModal = response!;
     notifyListeners();
   }
 
