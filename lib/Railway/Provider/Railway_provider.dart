@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../../utils/Railway_Helper.dart';
-import '../model/Railway_model.dart';
+import 'package:railway/utils/Railway_Helper.dart';
 
 class RailwayProvider extends ChangeNotifier {
-  ApiHelper apiHelper = ApiHelper();
-  RailwayModal RModal = RailwayModal();
-  TextEditingController trainc = TextEditingController();
-  String train = "Rajdhani";
+  List<dynamic> dataList = [];
 
-  Future<void> Railway() async {
-    var response = await apiHelper.RailwayApiCall(train);
-    RModal = response!;
-    notifyListeners();
+  Future<List> callApi() async {
+    ApiHelper apiHelper = ApiHelper();
+    var response = await apiHelper.RailwayApiCall();
+    dataList = response;
+    return dataList;
   }
-
-  void search() {
-    train = trainc.text;
-    notifyListeners();
-    }
 }

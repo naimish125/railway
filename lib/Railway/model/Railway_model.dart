@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-List<RailwayModal> trainmodelFromJson(String str) =>
-    List<RailwayModal>.from(json.decode(str).map((x) => RailwayModal.fromJson(x)));
+List<RailwayModal> trainmodelFromJson(String str) => List<RailwayModal>.from(
+    json.decode(str).map((x) => RailwayModal.fromJson(x)));
 
 String trainmodelToJson(List<RailwayModal> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -22,20 +22,20 @@ class RailwayModal {
   });
 
   factory RailwayModal.fromJson(Map<String, dynamic> json) => RailwayModal(
-    trainNum: json["train_num"],
-    name: json["name"],
-    trainFrom: json["train_from"],
-    trainTo: json["train_to"],
-    data: Data.fromJson(json["data"]),
-  );
+        trainNum: json["train_num"],
+        name: json["name"],
+        trainFrom: json["train_from"],
+        trainTo: json["train_to"],
+        data: Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "train_num": trainNum,
-    "name": name,
-    "train_from": trainFrom,
-    "train_to": trainTo,
-    "data": data?.toJson(),
-  };
+        "train_num": trainNum,
+        "name": name,
+        "train_from": trainFrom,
+        "train_to": trainTo,
+        "data": data?.toJson(),
+      };
 }
 
 class Data {
@@ -58,32 +58,32 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    id: json["id"],
-    days: Days.fromJson(json["days"]),
-    toId: json["to_id"],
-    classes:
-    List<Class>.from(json["classes"].map((x) => classValues.map[x]!)),
-    fromId: json["from_id"],
-    arriveTime: json["arriveTime"],
-    departTime: json["departTime"],
-  );
+        id: json["id"],
+        days: Days.fromJson(json["days"]),
+        toId: json["to_id"],
+        classes:
+            List<Class>.from(json["classes"].map((x) => classValues.map[x]!)),
+        fromId: json["from_id"],
+        arriveTime: json["arriveTime"],
+        departTime: json["departTime"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "days": days?.toJson(),
-    "to_id": toId,
-    "classes":
-    List<dynamic>.from(classes!.map((x) => classValues.reverse[x])),
-    "from_id": fromId,
-    "arriveTime": arriveTime,
-    "departTime": departTime,
-  };
+        "id": id,
+        "days": days?.toJson(),
+        "to_id": toId,
+        "classes":
+            List<dynamic>.from(classes!.map((x) => classValues.reverse[x])),
+        "from_id": fromId,
+        "arriveTime": arriveTime,
+        "departTime": departTime,
+      };
 }
 
 enum Class { THE_3_A, THE_2_A, THE_1_A }
 
 final classValues =
-EnumValues({"1A": Class.THE_1_A, "2A": Class.THE_2_A, "3A": Class.THE_3_A});
+    EnumValues({"1A": Class.THE_1_A, "2A": Class.THE_2_A, "3A": Class.THE_3_A});
 
 class Days {
   dynamic fri;
@@ -105,24 +105,24 @@ class Days {
   });
 
   factory Days.fromJson(Map<String, dynamic> json) => Days(
-    fri: json["Fri"],
-    mon: json["Mon"],
-    sat: json["Sat"],
-    sun: json["Sun"],
-    thu: json["Thu"],
-    tue: json["Tue"],
-    wed: json["Wed"],
-  );
+        fri: json["Fri"],
+        mon: json["Mon"],
+        sat: json["Sat"],
+        sun: json["Sun"],
+        thu: json["Thu"],
+        tue: json["Tue"],
+        wed: json["Wed"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "Fri": fri,
-    "Mon": mon,
-    "Sat": sat,
-    "Sun": sun,
-    "Thu": thu,
-    "Tue": tue,
-    "Wed": wed,
-  };
+        "Fri": fri,
+        "Mon": mon,
+        "Sat": sat,
+        "Sun": sun,
+        "Thu": thu,
+        "Tue": tue,
+        "Wed": wed,
+      };
 }
 
 class EnumValues<T> {
@@ -134,5 +134,5 @@ class EnumValues<T> {
   Map<T, String> get reverse {
     reverseMap = map.map((k, v) => MapEntry(v, k));
     return reverseMap;
-    }
+  }
 }
