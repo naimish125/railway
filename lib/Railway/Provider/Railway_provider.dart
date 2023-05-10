@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:railway/utils/Railway_Helper.dart';
+import 'package:flutter/cupertino.dart';
+import '../../utils/Railway_Helper.dart';
 
 class RailwayProvider extends ChangeNotifier {
-  List<dynamic> dataList = [];
-
-  Future<List> callApi() async {
+  Future<List> getRailway() async {
     ApiHelper apiHelper = ApiHelper();
-    var response = await apiHelper.RailwayApiCall();
-    dataList = response;
-    return dataList;
+
+    List l1 = await apiHelper.RAilwayApicall();
+    return l1;
   }
 }

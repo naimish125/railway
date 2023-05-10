@@ -1,29 +1,29 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 import '../Railway/model/Railway_model.dart';
 
 class ApiHelper {
-  Future<List> RailwayApiCall() async {
-    List<dynamic> list = [];
-    String apiLink = "https://trains.p.rapidapi.com/";
-    Uri uri = Uri.parse(apiLink);
+  Future<List> RAilwayApicall() async {
+    String apilink = "https://trains.p.rapidapi.com";
+    Uri url = Uri.parse(apilink);
+
     Map m1 = {"search": "Rajdhani"};
     var json = jsonEncode(m1);
 
     var response = await http.post(
-      uri,
+      url,
       headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": "891ebeaadfmshcdb75ddf0e11d14p18d866jsn01058ac4fde1",
-        "X-RapidAPI-Host": "trains.p.rapidapi.com00000000000000000000"
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': 'e1ce1db1b6mshd5301ab816f5ff7p133682jsnd4862ef0f16d',
+        'X-RapidAPI-Host': 'trains.p.rapidapi.com'
       },
       body: json,
     );
-    var jjson = jsonDecode(response.body);
-    List<RailwayModal> apiModalList =
-        jjson.map((e) => RailwayModal.fromJson(e)).toList();
-    list = apiModalList;
-    return list;
+    var json1 = jsonDecode(response.body);
+
+    List trainjsonList = json1.map((e) => RailwayModel.fromJson(e)).toList();
+    return trainjsonList;
   }
 }
